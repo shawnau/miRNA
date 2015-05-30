@@ -1,0 +1,4 @@
+# 忽略 output/ 目录下的所有文件
+input/
+output/
+database/
