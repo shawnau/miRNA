@@ -25,11 +25,11 @@ def cluster_distance_calculation():
     result = []
     for i in range(1, len(query_list)):
         for a in range(1, len(data_list)):
-            flag_a = re.search(query_list[i][0], data_list[a][0])
+            flag_a = re.search(query_list[i][0], data_list[a][0], re.I)
             if flag_a:
                 break
         for b in range(1, len(data_list)):
-            flag_b = re.search(query_list[i][1], data_list[a][0])
+            flag_b = re.search(query_list[i][1], data_list[b][0], re.I)
             if flag_b:
                 break
 
