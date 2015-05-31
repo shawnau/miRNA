@@ -3,3 +3,4 @@ input/
 output/
 database/
 *.pyc
+.idea/
