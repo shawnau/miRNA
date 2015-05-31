@@ -101,7 +101,7 @@ for i in range(0, len(db_list)-1, 2):  # notice the last line is blank
                   db_list[i+1][:-1]
                   ])  # mirna:[name,seq]
 
-for i in range(len(mirna)):  # only -3p could match -5p
+for i in range(len(mirna)):
     for j in range(i, len(mirna)):
         result_xy.append([mirna[i][0],
                          mirna[j][0],
