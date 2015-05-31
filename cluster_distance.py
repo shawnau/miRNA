@@ -25,23 +25,24 @@ def cluster_distance_calculation():
     result = []
     for i in range(1, len(query_list)):
         for a in range(1, len(data_list)):
-            # matches 'hsa-mir-16-2' out of 'hsa-mir-16-2,hsa-mir-15b'
-            flag_a_1 = re.search(query_list[i][0]+'(?=\W)', data_list[a][3], re.I)
-            # matches 'hsa-mir-16-2' out of 'hsa-mir-15b,hsa-mir-16-2' or 'hsa-mir-16-2'
-            flag_a_2 = re.search(query_list[i][0]+'$', data_list[a][3], re.I)
-            if flag_a_1 or flag_a_2:
+            flag_a = re.search(query_list[i][0], data_list[a][0])
+            if flag_a:
                 break
-        for b in range(len(data_list)):
-            flag_b_1 = re.search(query_list[i][1]+'(?=\W)', data_list[b][3], re.I)
-            flag_b_2 = re.search(query_list[i][1]+'$', data_list[b][3], re.I)
-            if flag_b_1 or flag_b_2:
+        for b in range(1, len(data_list)):
+            flag_b = re.search(query_list[i][1], data_list[a][0])
+            if flag_b:
                 break
-        if (flag_a_1 or flag_a_2) and (flag_b_1 or flag_b_2):
-            if data_list[a][0] == data_list[b][0]:
+
+        if flag_a and flag_b:
+            cluster_a_search = re.search('^\d*', data_list[a][3])
+            cluster_b_search = re.search('^\d*', data_list[b][3])
+            cluster_a = cluster_a_search.group()
+            cluster_b = cluster_b_search.group()
+            if data_list[a][1] == data_list[b][1]:
                 result.append([query_list[i][0],
                                query_list[i][1],
                                query_list[i][2],
-                               abs(float(data_list[a][2])-float(data_list[b][2]))]
+                               abs(float(cluster_a)-float(cluster_b))]
                               )
             else:
                 result.append([query_list[i][0],
