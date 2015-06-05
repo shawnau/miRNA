@@ -15,7 +15,7 @@ This line was left blank intentionally."""
 
 def cluster_distance_calculation():
     print('Calculating cluster distance...')
-    with open("database/cluster.csv", "r+") as database:
+    with open("database/flt-CACO2_mirCluster.csv", "r+") as database:
         data_csv = csv.reader(database)
         data_list = list(data_csv)
     with open("output/free_energy.csv", "r+") as query:
